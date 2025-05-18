@@ -63,3 +63,19 @@ def authenticate_user():
     else:
         print("❌ Invalid username or password.")
         return False
+
+
+def login():
+    """Handles user login or creation."""
+    while True:
+        choice = input(
+            "Press '1' to login or '2' to create a new user: "
+            ).strip()
+        if choice == "1":
+            if authenticate_user():
+                break
+        elif choice == "2":
+            create_new_user()
+            break
+        else:
+            print("❌ Invalid choice. Please try again.")
