@@ -1,5 +1,6 @@
 import sqlite3
 from datetime import datetime
+import csv
 
 
 DB_PATH = "data/balance.db"
@@ -99,3 +100,31 @@ def get_summary(start_date=None, end_date=None, group_by="category"):
     conn.close()
 
     return [{group_by: row[0], "total": row[1]} for row in results]
+
+
+def load_cashflow_from_csv(file_path):
+    cashflow_entries = []
+    try:
+        with open(file_path, mode="r", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                try:
+                    # Parse date
+                    date_str = row["date"]
+                    datetime.strptime(date_str, "%Y-%m-%d")  # validation
+
+                    cashflow = {
+                        "amount": float(row["amount"]),
+                        "category": row["category"],
+                        "description": row.get("description", ""),
+                        "date": row["date"],
+                        "timestamp": f"{date_str}T00:00:00"
+                    }
+                    # Validate date format
+                    datetime.strptime(cashflow["date"], "%Y-%m-%d")
+                    cashflow_entries.append(cashflow)
+                except (ValueError, KeyError) as e:
+                    print(f"Skipping invalid row: {row} ({e})")
+    except FileNotFoundError:
+        print(f"CSV file not found: {file_path}")
+    return cashflow_entries
