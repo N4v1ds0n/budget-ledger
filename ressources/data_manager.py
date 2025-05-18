@@ -99,4 +99,3 @@ def get_summary(start_date=None, end_date=None, group_by="category"):
     conn.close()
 
     return [{group_by: row[0], "total": row[1]} for row in results]
-
