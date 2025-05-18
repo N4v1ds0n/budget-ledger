@@ -1,5 +1,7 @@
 from ressources.input_handler import get_cashflow_input
-from ressources.data_manager import init_db, save_cashflow, load_cashflow_from_csv, export_cashflow_to_csv
+from ressources.data_manager import init_db, save_cashflow
+from ressources.data_manager import load_cashflow_from_csv
+from ressources.data_manager import export_cashflow_to_csv
 from ressources.summarizer import summarize_cashflow
 import os
 
