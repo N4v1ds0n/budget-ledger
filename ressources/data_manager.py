@@ -1,5 +1,5 @@
 import sqlite3
-
+from datetime import datetime
 
 
 DB_PATH = "data/balance.db"
@@ -52,3 +52,22 @@ def save_cashflow(entries):
     ])
     conn.commit()
     conn.close()
+
+
+def load_cashflow():
+    """Loads all cashflow records from the database."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT amount, category, description, timestamp FROM balance")
+    rows = cursor.fetchall()
+    conn.close()
+    return [
+        {
+            "amount": row[0],
+            "category": row[1],
+            "description": row[2],
+            "date": row[3],
+            "timestamp": row[4]
+        }
+        for row in rows
+    ]
