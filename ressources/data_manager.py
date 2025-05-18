@@ -128,3 +128,29 @@ def load_cashflow_from_csv(file_path):
     except FileNotFoundError:
         print(f"CSV file not found: {file_path}")
     return cashflow_entries
+
+
+def export_cashflow_to_csv(start_date, end_date, output_file):
+    """Exports cashflow entries in a date range to a CSV file."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT amount, category, description, date, timestamp
+        FROM balance
+        WHERE date BETWEEN ? AND ?
+        ORDER BY date ASC
+    """, (start_date, end_date))
+    rows = cursor.fetchall()
+    conn.close()
+
+    with open(output_file, mode="w", newline="", encoding="utf-8") as file:
+        writer = csv.writer(file)
+        writer.writerow([
+            "amount",
+            "category",
+            "description",
+            "date",
+            "timestamp"
+            ])
+        writer.writerows(rows)
+    print(f"Exported {len(rows)} records to {output_file}")
