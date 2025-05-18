@@ -6,9 +6,9 @@ import csv
 DB_PATH = "data/balance.db"
 
 
-def init_db(DB_PATH=DB_PATH):
+def init_db(db_path=DB_PATH):
     """Initializes the database with the balance table if it doesn't exist."""
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS balance (
