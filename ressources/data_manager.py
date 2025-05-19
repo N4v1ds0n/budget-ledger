@@ -60,27 +60,6 @@ def save_cashflow(entries):
     conn.close()
 
 
-def load_cashflow():
-    """Loads all cashflow records from the database."""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT amount, category, description, timestamp FROM balance"
-        )
-    rows = cursor.fetchall()
-    conn.close()
-    return [
-        {
-            "amount": row[0],
-            "category": row[1],
-            "description": row[2],
-            "date": row[3],
-            "timestamp": row[4]
-        }
-        for row in rows
-    ]
-
-
 def get_summary(start_date=None, end_date=None, group_by="category"):
     """Returns a summary of cashflow entries in a date range.
     The summary is grouped by the specified field (default: category)."""

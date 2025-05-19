@@ -68,6 +68,7 @@ Menus, user prompts, and outputs are formatted for maximum clarity and usability
 ### User Stories
 
 **As a user I want to:**
+
 1. Register and log in with a unique username and password
 2. View and manage only my personal financial data
 3. Add income and expense records with category, note, and date
@@ -77,6 +78,7 @@ Menus, user prompts, and outputs are formatted for maximum clarity and usability
 7. Receive clear prompts and error messages when input is invalid
 
 **As a site administrator I want to:**
+
 8. Ensure each user's data is isolated and stored securely
 9. Track user creation and login events via a user database
 
@@ -250,5 +252,5 @@ Deployed to [Heroku](https://heroku.com) using Code Institute’s Python Essenti
 Last but not least I would like to thank :
 
     My mentor Mo Shami for his very helpful advice and guidance as well as feedback on my work.
-    My wife for her design advice and testing the page now and then.
+    My wife for testing the page now and then.
 
