@@ -106,13 +106,17 @@ Menus, user prompts, and outputs are formatted for maximum clarity and usability
   - Modular structure
   - Dynamic menus
   - Helpful validation and input checking
+- **Import CSVs (e.g., from banks)**
+  -
+- **Logout and switch user**
+  -
+  -
+
 
 ### Possible Future Features
 
-- Logout and switch user
 - Password reset (via CLI or token)
 - Budget planning per category
-- Import CSVs (e.g., from banks)
 - Weekly or monthly stats overview
 - Transaction deletion or editing
 
@@ -154,8 +158,6 @@ Tested on:
 | Environment       | Result |
 |-------------------|--------|
 | VS Code Terminal  | ✔      |
-| macOS Terminal    | ✔      |
-| Windows CMD       | ✔      |
 | Heroku CLI App    | ✔      |
 
 ### Testing User Stories
@@ -190,14 +192,12 @@ None known at time of submission.
 Deployed to [Heroku](https://heroku.com) using Code Institute’s Python Essentials terminal template.
 
 **Steps to deploy:**
-1. Clone the GitHub repo
-2. Push to new Heroku app
-3. Add Python + Node.js buildpacks
-4. Create `Procfile` with:
-
-web: python3 main.py
-
-5. Enable deploys from GitHub branch
+1. Create a Heroku account (if not already existing)
+2. Create a new app with Heroku
+3. Add Python + Node.js buildpacks (in this specific order)
+4. Allowing Heroku access to GitHub, link the new app to the relevant repository
+5. Choose whether or not to enable Automatic Deploys. If enabled, the deployed app will update automatically with each push to GitHub
+6. Click Deploy
 
 ---
 
@@ -206,12 +206,12 @@ web: python3 main.py
 ### Code
 
 - Code Institute’s [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template)
-- SQLite usage adapted from [official docs](https://docs.python.org/3/library/sqlite3.html)
-- CSV and date parsing based on [Python standard library docs](https://docs.python.org/3/library/csv.html)
-- Matplotlib chart logic based on [Matplotlib docs](https://matplotlib.org/stable/gallery/index.html)
+- Copilot used for pair programming
 
 ### Acknowledgements
 
-Thanks to the Code Institute community for debugging guidance and review advice!
+Last but not least I would like to thank :
 
----
+    My mentor Mo Shami for his very helpful advice and guidance as well as feedback on my work.
+    My wife for her design advice and testing the page now and then.
+
