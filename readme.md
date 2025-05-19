@@ -32,6 +32,7 @@ interface.
 - [Testing](#testing)
   - [Validator Testing](#validator-testing)
   - [CLI Testing](#cli-testing)
+  - [Browser Testing](#browser-testing)
   - [Testing User Stories](#testing-user-stories)
 - [Debugging](#debugging)
 - [Deployment](#deployment)
@@ -43,7 +44,7 @@ interface.
 
 The following diagram illustrates the CLI app structure and the program flow for user interaction and database management:
 
-![Flowchart](assets/images/budget_ledger_flowchart.png) *(placeholder)*
+![Flowchart](docs/budget_ledger_flowchart.png)
 
 ---
 
@@ -61,25 +62,23 @@ Menus, user prompts, and outputs are formatted for maximum clarity and usability
 
 - Allow users to track and manage personal income/expenses
 - Secure user data through per-user authentication and individual databases
-- Provide a simple CLI menu with options for input, summaries, export, and visualization
+- Provide a simple CLI menu with options for input, import, summaries and export
 - Offer grouping and filtering (e.g., by date or category)
-- Enable optional export to CSV for external use
 
 ### User Stories
 
 **As a user I want to:**
-- Register and log in with a unique username and password
-- View and manage only my personal financial data
-- Add income and expense records with category, note, and date
-- View a summary of my spending grouped by category or date
-- Visualize my spending using bar and line charts
-- Export data to CSV within a selected date range
-- View individual transaction records
-- Receive clear prompts and error messages when input is invalid
+1. Register and log in with a unique username and password
+2. View and manage only my personal financial data
+3. Add income and expense records with category, note, and date
+4. View a summary of my spending grouped by category or date
+5. Export data to CSV within a selected date range
+6. View individual transaction records
+7. Receive clear prompts and error messages when input is invalid
 
 **As a site administrator I want to:**
-- Ensure each user's data is isolated and stored securely
-- Track user creation and login events via a user database
+8. Ensure each user's data is isolated and stored securely
+9. Track user creation and login events via a user database
 
 ---
 
@@ -90,27 +89,42 @@ Menus, user prompts, and outputs are formatted for maximum clarity and usability
 - **User Authentication**
   - Secure login with password hashing (SHA-256)
   - Per-user SQLite database (`data/<username>.db`)
+  - ensure registrated users exist before allowing login
+  - user story 1 covered
+- **Individual Databases**
+  - initiated upon first login
+  - only visible to user
+  - user stories 2, 8 covered
+- **User Database**
+  - stores username and hashed password
+  - stores whole userbase
+  - user story 9 covered
 - **Add Transaction**
   - Record income or expenses
   - Store amount, category, description, timestamp, and date
+  - user story 3 covered
+- **Import CSV**
+  - load csv files from inside the build
+  - add entries to user-database
+  - user story 3 covered
 - **Summarize**
   - Group by `category` or `date`
   - Filter by custom start and end dates
-- **Visualize**
-  - Bar chart for spending by category
-  - Line chart for spending over time
+  - user stories 4, 6 covered
 - **Export to CSV**
   - Custom date range
   - Clean CSV output with all relevant fields
+  - output to folder in build
+  - user story 5 covered
 - **Clean CLI Design**
   - Modular structure
   - Dynamic menus
   - Helpful validation and input checking
-- **Import CSVs (e.g., from banks)**
-  -
+  - user story 7 covered
 - **Logout and switch user**
-  -
-  -
+  - user can choose from menu to log out
+  - return to login screen
+  - user story 1 covered
 
 
 ### Possible Future Features
@@ -119,10 +133,13 @@ Menus, user prompts, and outputs are formatted for maximum clarity and usability
 - Budget planning per category
 - Weekly or monthly stats overview
 - Transaction deletion or editing
+- csv import/ export from external sources
 
 ---
 
 ## Data Model
+
+Here is a representation of the database structures used for this project:
 
 ### `user_data` (global users.db)
 | Field       | Type    | Notes                     |
@@ -157,10 +174,30 @@ Menus, user prompts, and outputs are formatted for maximum clarity and usability
 Tested on:
 | Environment       | Result |
 |-------------------|--------|
-| VS Code Terminal  | ✔      |
-| Heroku CLI App    | ✔      |
+| VS Code Terminal  | ✔     |
+| Heroku deployment | ✔     |
+
+### Browser Testing
+
+Tested on:
+| Browser | Layout | Functionality | 
+|---------|--------|---------------|
+| Firefox | ✔      | ✔            |
+| Chrome  | ✔      | ✔            |
+| Edge | ✔      | ✔            |
 
 ### Testing User Stories
+
+
+1. register and log in with a unique username and password
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| User Authentication | On start screen choose to login or create a new user | reach menu | Works as expected |
+
+<details><summary>Screenshots</summary>
+<img src="docs/user-stories/userstory-1-1of3.png">
+</details>
 
 | Goal | Outcome |
 |------|---------|
