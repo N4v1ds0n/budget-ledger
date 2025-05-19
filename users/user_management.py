@@ -1,4 +1,5 @@
 import sqlite3
+import hashlib
 from ressources.data_manager import set_db_path, init_db
 
 USERS_PATH = "users/user_data/user_data.db"
@@ -29,6 +30,10 @@ def init_user_db():
     conn.close()
 
 
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
+
+
 def create_new_user():
     """Creates a new user in the database."""
     username = input("Enter a username: ").strip()
@@ -44,7 +49,7 @@ def create_new_user():
         cursor.execute("""
             INSERT INTO user_data (username, password, created_at)
             VALUES (?, ?, datetime('now'))
-        """, (username, password))
+        """, (username, hash_password(password)))
         conn.commit()
         print(f"User '{username}' created successfully. You can now log in.")
     except sqlite3.IntegrityError:
@@ -66,7 +71,7 @@ def authenticate_user():
     cursor = conn.cursor()
     cursor.execute("""
         SELECT * FROM user_data WHERE username=? AND password=?
-    """, (username, password))
+    """, (username, hash_password(password)))
     user = cursor.fetchone()
     conn.close()
 
