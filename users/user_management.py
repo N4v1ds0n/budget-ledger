@@ -7,6 +7,15 @@ USERS_PATH = "users/user_data/user_data.db"
 CURRENT_USER = None
 
 
+def users_exist():
+    conn = sqlite3.connect(USERS_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM user_data")
+    count = cursor.fetchone()[0]
+    conn.close()
+    return count > 0
+
+
 def get_current_user():
     """Returns the current user if logged in, otherwise prompts for login."""
     if CURRENT_USER is None:
@@ -87,6 +96,10 @@ def authenticate_user():
 def login():
     """Handles user login or creation."""
     while True:
+        if not users_exist():
+            print("👤 No users found. Please register a new account.")
+            create_new_user()
+            continue
         choice = input(
             "Press '1' to login or '2' to create a new user: "
             ).strip()

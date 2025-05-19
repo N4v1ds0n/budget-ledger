@@ -1,0 +1,11 @@
+amount,category,description,date,timestamp
+100,food,lunch,2023-10-01,2023-10-01T12:00:00Z
+200,transportation,taxi,2023-10-02,2023-10-02T12:00:00Z 
+300,entertainment,movie,2023-10-03,2023-10-03T12:00:00Z
+400,food,dinner,2023-10-04,2023-10-04T12:00:00Z
+500,transportation,bus,2023-10-05,2023-10-05T12:00:00Z
+600,entertainment,concert,2023-10-06,2023-10-06T12:00:00Z   
+700,food,breakfast,2023-10-07,2023-10-07T12:00:00Z
+800,transportation,train,2023-10-08,2023-10-08T12:00:00Z
+900,entertainment,game,2023-10-09,2023-10-09T12:00:00Z
+1000,food,snack,2023-10-10,2023-10-10T12:00:00Z

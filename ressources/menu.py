@@ -40,7 +40,9 @@ def menu():
                 print("No valid cashflow entries found in the file.")
         elif choice == "4":
             file_path = input("Enter the path to save the CSV file: ")
-            export_cashflow_to_csv(file_path)
+            start_date = input("Enter the start date (YYYY-MM-DD): ")
+            end_date = input("Enter the end date (YYYY-MM-DD): ")
+            export_cashflow_to_csv(start_date, end_date, file_path)
             print(f"Cashflow exported to {file_path}.")
         elif choice == "5":
             print("Logging out...")
