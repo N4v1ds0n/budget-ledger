@@ -40,14 +40,17 @@ def create_new_user():
 
     conn = sqlite3.connect(USERS_PATH)
     cursor = conn.cursor()
-    cursor.execute("""
-        INSERT INTO user_data (username, password, created_at)
-        VALUES (?, ?, datetime('now'))
-    """, (username, password))
-    conn.commit()
-    conn.close()
-    print(f"User '{username}' created successfully.")
-    login()
+    try:
+        cursor.execute("""
+            INSERT INTO user_data (username, password, created_at)
+            VALUES (?, ?, datetime('now'))
+        """, (username, password))
+        conn.commit()
+        print(f"User '{username}' created successfully. You can now log in.")
+    except sqlite3.IntegrityError:
+        print("❌ Username already exists.")
+    finally:
+        conn.close()
 
 
 def authenticate_user():
@@ -91,6 +94,5 @@ def login():
                 return True
         elif choice == "2":
             create_new_user()
-            break
         else:
             print("❌ Invalid choice. Please try again.")
