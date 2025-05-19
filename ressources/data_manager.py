@@ -6,6 +6,11 @@ import csv
 DB_PATH = "data/balance.db"
 
 
+def set_db_path(path):
+    global DB_PATH
+    DB_PATH = path
+
+
 def init_db(db_path=DB_PATH):
     """Initializes the database with the balance table if it doesn't exist."""
     conn = sqlite3.connect(db_path)
