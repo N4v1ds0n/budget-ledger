@@ -1,4 +1,5 @@
 import sqlite3
+from ressources.menu import menu
 
 USERS_PATH = ".users/user_data/user_data.db"
 
@@ -37,7 +38,7 @@ def create_new_user():
     conn.commit()
     conn.close()
     print(f"User '{username}' created successfully.")
-    return username
+    login()
 
 
 def authenticate_user():
@@ -58,10 +59,8 @@ def authenticate_user():
     conn.close()
 
     if user:
-        print(f"Welcome back, {username}!")
         return True
     else:
-        print("❌ Invalid username or password.")
         return False
 
 
@@ -73,6 +72,8 @@ def login():
             ).strip()
         if choice == "1":
             if authenticate_user():
+                print("Login successful.")
+                menu()
                 break
         elif choice == "2":
             create_new_user()

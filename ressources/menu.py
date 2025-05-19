@@ -1,5 +1,6 @@
 from ressources.input_handler import get_cashflow_input
 from ressources.summarizer import summarize_cashflow
+from users.user_management import login
 from ressources.data_manager import (
     save_cashflow,
     load_cashflow_from_csv,
@@ -10,12 +11,14 @@ from ressources.data_manager import (
 def menu():
     while True:
         choice = input(
-            """\nPress '1' to add Cashflow\n
+            """
+            \nPress '1' to add Cashflow\n
             Press '2' to receive a summary for a specific timeslot\n
             Press '3' to upload a csv file\n
-            press '4' to export your cashflow to a csv file\n
-            Press '5' to exit\n
-            Choose an option: """
+            Press '4' to export your cashflow to a csv file\n
+            Press '5' to log out\n
+            Choose an option:
+            """
             )
         if choice == "1":
             entry = get_cashflow_input()
@@ -40,6 +43,6 @@ def menu():
             export_cashflow_to_csv(file_path)
             print(f"Cashflow exported to {file_path}.")
         elif choice == "5":
-            break
+            login()
         else:
             print("❌ Invalid choice.")
