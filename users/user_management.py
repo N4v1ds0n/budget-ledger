@@ -3,6 +3,15 @@ from ressources.menu import menu
 
 USERS_PATH = ".users/user_data/user_data.db"
 
+CURRENT_USER = None
+
+
+def get_current_user():
+    """Returns the current user if logged in, otherwise prompts for login."""
+    if CURRENT_USER is None:
+        login()
+    return CURRENT_USER
+
 
 def init_user_db():
     """Initializes the database with the balance table if it doesn't exist."""
@@ -59,6 +68,9 @@ def authenticate_user():
     conn.close()
 
     if user:
+        print(f"Welcome back, {username}!")
+        global CURRENT_USER
+        CURRENT_USER = username
         return True
     else:
         return False
