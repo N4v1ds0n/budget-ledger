@@ -43,6 +43,7 @@ def menu():
             export_cashflow_to_csv(file_path)
             print(f"Cashflow exported to {file_path}.")
         elif choice == "5":
+            print("Logging out...")
             login()
         else:
             print("❌ Invalid choice.")

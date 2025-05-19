@@ -1,5 +1,6 @@
 import sqlite3
 from ressources.menu import menu
+from ressources.data_manager import set_db_path, init_db
 
 USERS_PATH = ".users/user_data/user_data.db"
 
@@ -85,8 +86,10 @@ def login():
         if choice == "1":
             if authenticate_user():
                 print("Login successful.")
+                user_db = f"data/{CURRENT_USER}.db"
+                set_db_path(user_db)
+                init_db()  # Initializes user's personal DB if not present
                 menu()
-                break
         elif choice == "2":
             create_new_user()
             break
