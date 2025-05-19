@@ -9,7 +9,7 @@ def main():
     init_user_db()  # Ensure the user database is initialized
     if login():     # Prompt for user login
         menu()
-    print("Welcome to your personal budget ledger!")
+        print("Welcome to your personal budget ledger!")
 
 
 if __name__ == "__main__":
