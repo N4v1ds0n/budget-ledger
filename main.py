@@ -1,4 +1,5 @@
 from users.user_management import init_user_db, login
+from ressources.menu import menu
 import os
 
 os.makedirs("exports", exist_ok=True)
@@ -6,7 +7,8 @@ os.makedirs("exports", exist_ok=True)
 
 def main():
     init_user_db()  # Ensure the user database is initialized
-    login()  # Prompt for user login
+    if login():     # Prompt for user login
+        menu()
     print("Welcome to your personal budget ledger!")
 
 

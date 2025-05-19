@@ -11,9 +11,9 @@ def set_db_path(path):
     DB_PATH = path
 
 
-def init_db(db_path=DB_PATH):
+def init_db():
     """Initializes the database with the balance table if it doesn't exist."""
-    conn = sqlite3.connect(db_path)
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS balance (
