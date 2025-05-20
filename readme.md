@@ -305,8 +305,11 @@ Tested on lighthouse:
 
 ### Fixed Bugs
 
+
+- **TypeError: list indices must be integers or slices, not str during CSV Import** Updated save_cashflow() to detect and handle both single entries and lists
+- **timestamp was NOT NULL, but not provided from CSV** When importing from CSV, generated timestamp from the given date
 - **Circular import error** when calling `menu()` from `user_management` — fixed by moving all menu calls to `main.py`
-- **Missing directory error** when creating user DB — fixed with `os.makedirs()`
+- **Missing directory error** when exporting csv — fixed with `os.makedirs()`
 - **Unrecognized column 'date'** — resolved by adding proper SQL `DATE()` logic and schema updates
 
 ### Unfixed Bugs
@@ -371,4 +374,3 @@ Last but not least I would like to thank :
 
     My mentor Mo Shami for his very helpful advice and guidance as well as feedback on my work.
     My wife for testing the page now and then.
-
