@@ -14,7 +14,7 @@ Budget Ledger is a **terminal-based personal finance tracker** built in Python 3
 designed to help users manage their income and expenses through an intuitive CLI 
 interface.
 
-[Link to live CLI deployment (Heroku)](https://budget-ledger-3f04126e52ee.herokuapp.com/)
+[Link to live CLI deployment (Heroku)](https://budget-ledger-685f14a84166.herokuapp.com/)
 
 ---
 
