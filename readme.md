@@ -363,7 +363,7 @@ Deployed to [Heroku](https://heroku.com) using Code Institute’s Python Essenti
 ### Code
 
 - Code Institute’s [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template)
-- Copilot used for pair programming
+- OpenAI used for research and code review
 
 ### Acknowledgements
 
