@@ -56,6 +56,7 @@ This is a **terminal-only application**, so visual styling is handled through cl
 
 Menus, user prompts, and outputs are formatted for maximum clarity and usability, even in plain text environments.
 
+Also the database and csv functionality is limited to the current deployment. This means there is no persistency across different deployments and imports and exports can not leave or enter the deployment. The about markdown files in the folders data, exports, testfiles and user_data explain this further. 
 ---
 
 ## UX
