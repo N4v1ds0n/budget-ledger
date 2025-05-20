@@ -33,6 +33,7 @@ interface.
   - [Validator Testing](#validator-testing)
   - [CLI Testing](#cli-testing)
   - [Browser Testing](#browser-testing)
+  - [Performance Testing](#performance-testing)
   - [Testing User Stories](#testing-user-stories)
 - [Debugging](#debugging)
 - [Technologies](#technologies)
@@ -189,6 +190,12 @@ Tested on:
 | Chrome  | ✔      | ✔            |
 | Edge | ✔      | ✔            |
 
+
+### Performance Testing
+
+Tested on lighthouse:
+<img src="docs/perf/lighthouse.png">
+
 ### Testing User Stories
 
 
@@ -322,9 +329,30 @@ Deployed to [Heroku](https://heroku.com) using Code Institute’s Python Essenti
 **Steps to deploy:**
 1. Create a Heroku account (if not already existing)
 2. Create a new app with Heroku
+<details><summary>Screenshots</summary>
+<img src="docs/deploy/deployment-1.png">
+<img src="docs/deploy/deployment-2.png">
+</details>
+
 3. Add Python + Node.js buildpacks (in this specific order)
+<details><summary>Screenshots</summary>
+<img src="docs/deploy/deployment-3.png">
+<img src="docs/deploy/deployment-4.png">
+</details>
+
 4. Allowing Heroku access to GitHub, link the new app to the relevant repository
+<details><summary>Screenshots</summary>
+<img src="docs/deploy/deployment-5.png">
+<img src="docs/deploy/deployment-6.png">
+<img src="docs/deploy/deployment-7.png">
+</details>
+
 5. Choose whether or not to enable Automatic Deploys. If enabled, the deployed app will update automatically with each push to GitHub
+
+<details><summary>Screenshots</summary>
+<img src="docs/deploy/deployment-8.png">
+</details>
+
 6. Click Deploy
 
 ---
