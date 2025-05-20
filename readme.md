@@ -35,6 +35,7 @@ interface.
   - [Browser Testing](#browser-testing)
   - [Testing User Stories](#testing-user-stories)
 - [Debugging](#debugging)
+- [Technologies](#technologies)
 - [Deployment](#deployment)
 - [Credits](#credits)
 
@@ -50,7 +51,7 @@ The following diagram illustrates the CLI app structure and the program flow for
 
 ## Design
 
-This is a **terminal-only application**, so visual styling is handled through clear, structured text layout and color formatting using `Colorama`.
+This is a **terminal-only application**, so visual styling is handled through clear, structured text layout and color formatting.
 
 Menus, user prompts, and outputs are formatted for maximum clarity and usability, even in plain text environments.
 
@@ -73,8 +74,8 @@ Menus, user prompts, and outputs are formatted for maximum clarity and usability
 2. View and manage only my personal financial data
 3. Add income and expense records with category, note, and date
 4. View a summary of my spending grouped by category or date
-5. Export data to CSV within a selected date range
-6. View individual transaction records
+5. Import data from CSV
+6. Export data to CSV within a selected date range
 7. Receive clear prompts and error messages when input is invalid
 
 **As a site administrator I want to:**
@@ -108,16 +109,16 @@ Menus, user prompts, and outputs are formatted for maximum clarity and usability
 - **Import CSV**
   - load csv files from inside the build
   - add entries to user-database
-  - user story 3 covered
+  - user story 5 covered
 - **Summarize**
   - Group by `category` or `date`
   - Filter by custom start and end dates
-  - user stories 4, 6 covered
+  - user stories 4 covered
 - **Export to CSV**
   - Custom date range
   - Clean CSV output with all relevant fields
   - output to folder in build
-  - user story 5 covered
+  - user story 6 covered
 - **Clean CLI Design**
   - Modular structure
   - Dynamic menus
@@ -167,7 +168,7 @@ Here is a representation of the database structures used for this project:
 
 ### Validator Testing
 
-- **PEP8** compliance ensured using [PEP8 Online](http://pep8online.com/)
+- **PEP8** compliance ensured using flake8 extension for VScode
 - Linter warnings fixed (e.g., spacing, line length)
 - CLI-only app; no HTML/CSS validation required
 
@@ -191,26 +192,106 @@ Tested on:
 ### Testing User Stories
 
 
-1. register and log in with a unique username and password
+1. Register and log in with a unique username and password
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | User Authentication | On start screen choose to login or create a new user | reach menu | Works as expected |
 
 <details><summary>Screenshots</summary>
-<img src="docs/user-stories/userstory-1-1of3.png">
+<img src="docs/userstories/no-user-login.png">
+<img src="docs/userstories/login.png">
+<img src="docs/userstories/new-user.png">
+<img src="docs/userstories/set-password.png">
+<img src="docs/userstories/creation-successful.png">
+<img src="docs/userstories/login-user.png">
+<img src="docs/userstories/menu.png">
 </details>
 
-| Goal | Outcome |
-|------|---------|
-| User registration with hashed password | ✔ |
-| Login and access personal DB | ✔ |
-| Add entry and retrieve it | ✔ |
-| Summarize by category/date | ✔ |
-| Export filtered data to CSV | ✔ |
-| Prevent invalid input | ✔ |
+2. View and manage only my personal financial data
 
----
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Add transaction | On login user specific db is initiated or opened | transaction is added to user db | Works as expected |
+
+<details><summary>Screenshots</summary>
+<img src="docs/userstories/login-user.png">
+<img src="docs/userstories/user-database.png">
+</details>
+
+3. Add income and expense records with category, note, and date
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Individual Databases | In menu choose option "1" and enter the details | username.db | Works as expected |
+
+<details><summary>Screenshots</summary>
+<img src="docs/userstories/menu.png">
+<img src="docs/userstories/entry.png">
+<img src="docs/userstories/entry-db.png">
+</details>
+
+4. View a summary of my spending grouped by category or date
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Summarize | In menu choose option "2" and enter the details | console output of summary | Works as expected |
+
+<details><summary>Screenshots</summary>
+<img src="docs/userstories/summary.png">
+</details>
+
+5. Import data from CSV
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Import CSV | In menu choose option "3" and enter the details | csv entries added to user db | Works as expected |
+
+<details><summary>Screenshots</summary>
+<img src="docs/userstories/testfiles.png">
+<img src="docs/userstories/import.png">
+</details>
+
+6. Export data to CSV within a selected date range
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Export to CSV | In menu choose option "4" and enter the details | csv file added to chosen internal directory | Works as expected |
+
+<details><summary>Screenshots</summary>
+<img src="docs/userstories/export.png">
+<img src="docs/userstories/exports.png">
+</details>
+
+7. Receive clear prompts and error messages when input is invalid
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Clean CLI Design | wrong input | error message | Works as expected |
+
+<details><summary>Screenshots</summary>
+<img src="docs/userstories/wrong-input.png">
+</details>
+
+8. Ensure each user's data is isolated and stored securely
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Individual Databases | on user login | load or create individual database to work on | Works as expected |
+
+<details><summary>Screenshots</summary>
+<img src="docs/userstories/individual-dbs.png">
+</details>
+
+9. Track user creation and login events via a user database
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| User Databases | on user creation | create entry in users database | Works as expected |
+
+<details><summary>Screenshots</summary>
+<img src="docs/userstories/user-db.png">
+</details>
 
 ## Debugging
 
@@ -225,7 +306,15 @@ Tested on:
 None known at time of submission.
 
 ---
+## Technologies
 
+- lighthouse for performance testing
+- CorelDraw for flowchart
+- shields.io for icons on top of readme
+- amiresponsive.org for opener image of readme
+- openAi used for research
+
+---
 ## Deployment
 
 Deployed to [Heroku](https://heroku.com) using Code Institute’s Python Essentials terminal template.

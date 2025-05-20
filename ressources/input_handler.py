@@ -1,6 +1,6 @@
 def get_cashflow_input():
     try:
-        amount = float(input("Enter amount: £"))
+        amount = float(input("Enter amount: €"))
         category = input("Enter category (e.g., food,...): ").lower()
         description = input("Optional description: ")
         return {
